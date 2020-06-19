@@ -126,6 +126,8 @@ redis 127.0.0.1:6379> zrange zset-key 0 -1 withscores
 # <start id="upvote-code"/>
 # 准备好需要用到的常量。
 ONE_WEEK_IN_SECONDS = 7 * 86400
+# 这个常量是通过将一天的秒数( 86400 )除以文章展示一天所需的支持票数量( 200 )得出的:
+# 文章每获得一张支持票,程序就需要将文章的评分增加432分。
 VOTE_SCORE = 432
 
 def article_vote(conn, user, article):
@@ -145,8 +147,11 @@ def article_vote(conn, user, article):
 
     # 如果用户是第一次为这篇文章投票，那么增加这篇文章的投票数量和评分。
     if conn.sadd('voted:' + article_id, user):
+        # ZINCRBY命令用于对有序集合成员的分值执行自增操作
         conn.zincrby('score:', article, VOTE_SCORE)
+        # HINCRBY命令用于对散列存储的值执行自增操作
         conn.hincrby(article, 'votes', 1)
+        # todo SADD ZINCRBY HINCRBY 这3个命令应该放到一个事务里面执行
 # <end id="upvote-code"/>
 
 
@@ -209,7 +214,7 @@ def add_remove_groups(conn, article_id, to_add=[], to_remove=[]):
     # 构建存储文章信息的键名。
     article = 'article:' + article_id
     for group in to_add:
-        # 将文章添加到它所属的群组里面。
+        # 将文章添加到它所属的群组里面。(同一篇文章可能属于多个群组)
         conn.sadd('group:' + group, article)
     for group in to_remove:
         # 从群组里面移除文章。
@@ -225,6 +230,9 @@ def get_group_articles(conn, group, page, order='score:'):
     # 检查是否有已缓存的排序结果，如果没有的话就现在进行排序。
     if not conn.exists(key): 
         # 根据评分或者发布时间，对群组文章进行排序。
+        # ZINTERSTORE命令可以接受多个集合和多个有序集合作为输入
+        # 找出所有同时存在于集合和有序集合的成员,并以几种不同的方式来合并(combine)这些成员的分值
+        # 所有集合成员的分值都会被视为是 1
         conn.zinterstore(key,
             ['group:' + group, order],
             aggregate='max',
@@ -234,6 +242,10 @@ def get_group_articles(conn, group, page, order='score:'):
     # 调用之前定义的get_articles()函数来进行分页并获取文章数据。
     return get_articles(conn, page, key)
 # <end id="fetch-articles-group"/>
+
+# todo
+# 投反对票的功能 可以在article_vote() 函数和 post_article() 函数里面添加
+# 尝试为用户提供对调投票的功能 将支持票转换为反对票, 或者将反对票转换成支持票 参考第三章的 SMOVE命令
 
 #--------------- 以下是用于测试代码的辅助函数 --------------------------------
 
