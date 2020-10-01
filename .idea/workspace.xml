@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed544da0-c7c6-4f42-b443-bac625e7c7e3" name="Default Changelist" comment="" />
+    <list default="true" id="ed544da0-c7c6-4f42-b443-bac625e7c7e3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redis命令行命令演示和投票网站的代码示例.py" beforeDir="false" afterPath="$PROJECT_DIR$/redis命令行命令演示和投票网站的代码示例.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,10 +15,9 @@
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Redis命令行命令演示和投票网站的代码示例.py">
-          <provider selected="true" editor-type-id="live-pycharm">
-            <state>
-              <first_editor />
-              <second_editor />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="171" column="51" selection-start-line="171" selection-start-column="51" selection-end-line="171" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -25,10 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="38" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Redis命令行命令演示和投票网站的代码示例.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="332" />
+    <option name="y" value="123" />
     <option name="width" value="1280" />
-    <option name="height" value="762" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -80,17 +90,21 @@
       <updated>1601431452609</updated>
       <workItem from="1601431454984" duration="1430000" />
       <workItem from="1601434148140" duration="85000" />
-      <workItem from="1601434287792" duration="78000" />
+      <workItem from="1601434287792" duration="1364000" />
+      <workItem from="1601446445656" duration="4433000" />
+      <workItem from="1601534211340" duration="7574000" />
+      <workItem from="1601563033027" duration="801000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1593000" />
+    <option name="totallyTimeSpent" value="15687000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
+    <frame x="332" y="123" width="1280" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28671876" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.28671876" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -119,36 +133,16 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Redis五种数据结构命令的深入讲解.py">
       <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="live-pycharm">
-        <state>
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/使用Redis构建Web应用.py">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="-4333" />
       </provider>
-      <provider selected="true" editor-type-id="live-pycharm">
-        <state>
-          <first_editor relative-caret-position="-1580">
-            <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          </first_editor>
-          <second_editor relative-caret-position="-217" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Redis命令行命令演示和投票网站的代码示例.py">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="4650">
-          <caret line="138" column="25" lean-forward="true" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="live-pycharm">
-        <state>
-          <first_editor />
-          <second_editor />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="171" column="51" selection-start-line="171" selection-start-column="51" selection-end-line="171" selection-end-column="51" />
         </state>
       </provider>
     </entry>
