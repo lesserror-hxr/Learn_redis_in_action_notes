@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed544da0-c7c6-4f42-b443-bac625e7c7e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redis命令行命令演示和投票网站的代码示例.py" beforeDir="false" afterPath="$PROJECT_DIR$/redis命令行命令演示和投票网站的代码示例.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/使用Redis构建Web应用.py" beforeDir="false" afterPath="$PROJECT_DIR$/使用Redis构建Web应用.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,15 +13,21 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Redis命令行命令演示和投票网站的代码示例.py">
+        <entry file="file://$PROJECT_DIR$/使用Redis构建Web应用.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="171" column="51" selection-start-line="171" selection-start-column="51" selection-end-line="171" selection-end-column="51" />
+            <state relative-caret-position="184">
+              <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ZINTERSTORE</find>
+      <find>can_cache</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,12 +36,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Redis命令行命令演示和投票网站的代码示例.py" />
+        <option value="$PROJECT_DIR$/使用Redis构建Web应用.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="332" />
-    <option name="y" value="123" />
+    <option name="x" value="53" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
@@ -93,15 +99,15 @@
       <workItem from="1601434287792" duration="1364000" />
       <workItem from="1601446445656" duration="4433000" />
       <workItem from="1601534211340" duration="7574000" />
-      <workItem from="1601563033027" duration="801000" />
+      <workItem from="1601563033027" duration="14365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15687000" />
+    <option name="totallyTimeSpent" value="29251000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="332" y="123" width="1280" height="777" extended-state="0" />
+    <frame x="626" y="73" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.28671876" />
@@ -134,15 +140,17 @@
     <entry file="file://$PROJECT_DIR$/Redis五种数据结构命令的深入讲解.py">
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/使用Redis构建Web应用.py">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="-4333" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Redis命令行命令演示和投票网站的代码示例.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="171" column="51" selection-start-line="171" selection-start-column="51" selection-end-line="171" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/使用Redis构建Web应用.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="38" />
         </state>
       </provider>
     </entry>

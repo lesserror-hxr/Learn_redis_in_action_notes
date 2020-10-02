@@ -66,14 +66,15 @@ def clean_sessions(conn):
 
 
 # 代码清单 2-4
+# 每个用户的购物车都是一个散列，这个散列存储了商品ID与商品订购数量之间的映射。
 # <start id="_1311_14471_8279"/>
 def add_to_cart(conn, session, item, count):
     if count <= 0:
         # 从购物车里面移除指定的商品。
-        conn.hrem('cart:' + session, item) 
+        conn.hrem('cart:' + session, item)
     else:
         # 将指定的商品添加到购物车。
-        conn.hset('cart:' + session, item, count) 
+        conn.hset('cart:' + session, item, count)
 # <end id="_1311_14471_8279"/>
 
 
@@ -101,6 +102,7 @@ def clean_full_sessions(conn):
 
 
 # 代码清单 2-6
+# 查询本地Redis的延迟值通常低于1毫秒，而查询位于同一个数据中心的Redis的延迟值通常低于5毫秒。
 # <start id="_1311_14471_8291"/>
 def cache_request(conn, request, callback):
     # 对于不能被缓存的请求，直接调用回调函数。
@@ -108,7 +110,7 @@ def cache_request(conn, request, callback):
         return callback(request)
 
     # 将请求转换成一个简单的字符串键，方便之后进行查找。
-    page_key = 'cache:' + hash_request(request) 
+    page_key = 'cache:' + hash_request(request)
     # 尝试查找被缓存的页面。
     content = conn.get(page_key)
 
@@ -123,27 +125,38 @@ def cache_request(conn, request, callback):
 # <end id="_1311_14471_8291"/>
 
 
+# 数据行缓存
+# 程序使用了两个有序集合来记录应该在何时对缓存进行更新：第一个有序集合为调度（schedule）有序集合，
+# 它的成员为数据行的行ID，而分值则是一个时间戳，这个时间戳记录了应该在何时将指定的数据行缓存到Redis里面；
+# 第二个有序集合为延时（delay）有序集合，它的成员也是数据行的行ID，而分值则记录了指定数据行的缓存需要每隔多少秒
+# 更新一次。
+
+# XML Google的protocol buffer Thrift BSON MessagePack 都是存储数据的格式
 # 代码清单 2-7
+# 负责调度缓存和终止缓存的函数
+# 如果某个数据行的延迟值不存在，那么程序将取消对这个数据行的调度。
 # <start id="_1311_14471_8287"/>
 def schedule_row_cache(conn, row_id, delay):
     # 先设置数据行的延迟值。
-    conn.zadd('delay:', row_id, delay) 
+    conn.zadd('delay:', row_id, delay)
     # 立即缓存数据行。
-    conn.zadd('schedule:', row_id, time.time()) 
+    conn.zadd('schedule:', row_id, time.time())
 # <end id="_1311_14471_8287"/>
 
 
 # 代码清单 2-8
+# 守护进程函数
+# 这个函数将指定的数据行缓存到Redis里面，并不定期地对这些缓存进行更新。
 # <start id="_1311_14471_8292"/>
 def cache_rows(conn):
     while not QUIT:
         # 尝试获取下一个需要被缓存的数据行以及该行的调度时间戳，
         # 命令会返回一个包含零个或一个元组（tuple）的列表。
-        next = conn.zrange('schedule:', 0, 0, withscores=True) 
+        next = conn.zrange('schedule:', 0, 0, withscores=True)
         now = time.time()
         if not next or next[0][1] > now:
             # 暂时没有行需要被缓存，休眠50毫秒后重试。
-            time.sleep(.05) 
+            time.sleep(.05)
             continue
 
         row_id = next[0][0]
@@ -151,7 +164,7 @@ def cache_rows(conn):
         delay = conn.zscore('delay:', row_id)
         if delay <= 0:
             # 不必再缓存这个行，将它从缓存中移除。
-            conn.zrem('delay:', row_id) 
+            conn.zrem('delay:', row_id)
             conn.zrem('schedule:', row_id)
             conn.delete('inv:' + row_id)
             continue
@@ -159,11 +172,11 @@ def cache_rows(conn):
         # 读取数据行。
         row = Inventory.get(row_id)
         # 更新调度时间并设置缓存值。
-        conn.zadd('schedule:', row_id, now + delay)         
-        conn.set('inv:' + row_id, json.dumps(row.to_dict())) 
+        conn.zadd('schedule:', row_id, now + delay)
+        conn.set('inv:' + row_id, json.dumps(row.to_dict()))
 # <end id="_1311_14471_8292"/>
 
-
+# 网页分析
 # 代码清单 2-9
 # <start id="_1311_14471_8298"/>
 def update_token(conn, token, user, item=None):
@@ -173,24 +186,35 @@ def update_token(conn, token, user, item=None):
     if item:
         conn.zadd('viewed:' + token, item, timestamp)
         conn.zremrangebyrank('viewed:' + token, 0, -26)
+
+        # 记录了所有商品的浏览次数，并根据浏览次数对商品进行了排序，
+        # 被浏览得最多的商品被放到有序集合的索引0位置上，并且具有整个有序集合最少的分值。
         conn.zincrby('viewed:', item, -1)                   # 这行代码是新添加的。
 # <end id="_1311_14471_8298"/>
 
 
 # 代码清单 2-10
+# 守护进程函数
 # <start id="_1311_14471_8288"/>
 def rescale_viewed(conn):
     while not QUIT:
         # 删除所有排名在20 000名之后的商品。
         conn.zremrangebyrank('viewed:', 20000, -1)
         # 将浏览次数降低为原来的一半
-        conn.zinterstore('viewed:', {'viewed:': .5}) 
+        # zinterstore命令可以组合起一个或多个有序集合，并将有序集合包含的每个分值
+        # 都乘以一个给定的数值（用户可以为每个有序集合分别指定不同的相乘数值）。
+        # 将浏览次数降低为原来的一半
+        conn.zinterstore('viewed:', {'viewed:': .5})
         # 5分钟之后再执行这个操作。
-        time.sleep(300) 
+        time.sleep(300)
 # <end id="_1311_14471_8288"/>
 
 
 # 代码清单 2-11
+# 修改之前的页面是否需要被缓存的方法
+# 如果我们想以最少的代价来存储更多页面，那么可以考虑先对页面进行压缩
+# 然后再缓存到Redis里面；或者使用Edge Side Includes技术移除页面中的部分内容
+# 又或者对模板进行提前优化（pre-optimize）,移除所有非必要的空格字符。
 # <start id="_1311_14471_8289"/>
 def can_cache(conn, request):
     # 尝试从页面里面取出商品ID。
@@ -201,7 +225,7 @@ def can_cache(conn, request):
     # 取得商品的浏览次数排名。
     rank = conn.zrank('viewed:', item_id)
     # 根据商品的浏览次数排名来判断是否需要缓存这个页面。
-    return rank is not None and rank < 10000 
+    return rank is not None and rank < 10000
 # <end id="_1311_14471_8289"/>
 
 
@@ -240,7 +264,7 @@ class TestCh02(unittest.TestCase):
         conn = self.conn
         to_del = (
             conn.keys('login:*') + conn.keys('recent:*') + conn.keys('viewed:*') +
-            conn.keys('cart:*') + conn.keys('cache:*') + conn.keys('delay:*') + 
+            conn.keys('cart:*') + conn.keys('cache:*') + conn.keys('delay:*') +
             conn.keys('schedule:*') + conn.keys('inv:*'))
         if to_del:
             self.conn.delete(*to_del)
@@ -345,7 +369,7 @@ class TestCh02(unittest.TestCase):
         import pprint
         conn = self.conn
         global QUIT
-        
+
         print "First, let's schedule caching of itemX every 5 seconds"
         schedule_row_cache(conn, 'itemX', 5)
         print "Our schedule looks like:"
