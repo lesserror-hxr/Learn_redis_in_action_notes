@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed544da0-c7c6-4f42-b443-bac625e7c7e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/01_Redis命令行命令演示和投票网站的代码示例.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/04_数据安全与性能保证.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redis五种数据结构命令的深入讲解.py" beforeDir="false" afterPath="$PROJECT_DIR$/03_Redis五种数据结构命令的深入讲解.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redis命令行命令演示和投票网站的代码示例.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/使用Redis构建Web应用.py" beforeDir="false" afterPath="$PROJECT_DIR$/02_使用Redis构建Web应用.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +14,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/03_Redis五种数据结构命令的深入讲解.py">
+        <entry file="file://$PROJECT_DIR$/04_数据安全与性能保证.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-179">
-              <caret line="621" column="29" lean-forward="true" selection-start-line="621" selection-start-column="29" selection-end-line="621" selection-end-column="29" />
+            <state relative-caret-position="133">
+              <caret line="180" column="47" lean-forward="true" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -31,6 +28,8 @@
     <findStrings>
       <find>ZINTERSTORE</find>
       <find>can_cache</find>
+      <find>only</find>
+      <find>r</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -42,12 +41,14 @@
         <option value="$PROJECT_DIR$/Redis命令行命令演示和投票网站的代码示例.py" />
         <option value="$PROJECT_DIR$/使用Redis构建Web应用.py" />
         <option value="$PROJECT_DIR$/03_Redis五种数据结构命令的深入讲解.py" />
+        <option value="$PROJECT_DIR$/数据安全与性能保证.py" />
+        <option value="$PROJECT_DIR$/04_数据安全与性能保证.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="147" />
-    <option name="y" value="23" />
+    <option name="x" value="498" />
+    <option name="y" value="123" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
@@ -56,6 +57,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -67,7 +69,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -104,15 +105,18 @@
       <workItem from="1601434287792" duration="1364000" />
       <workItem from="1601446445656" duration="4433000" />
       <workItem from="1601534211340" duration="7574000" />
-      <workItem from="1601563033027" duration="61057000" />
+      <workItem from="1601563033027" duration="86735000" />
+      <workItem from="1602573031952" duration="50000" />
+      <workItem from="1603613048738" duration="6990000" />
+      <workItem from="1603677772425" duration="5693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75943000" />
+    <option name="totallyTimeSpent" value="114354000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="147" y="23" width="1280" height="777" extended-state="0" />
+    <frame x="386" y="209" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.28671876" />
@@ -149,17 +153,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_使用Redis构建Web应用.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="180" column="32" lean-forward="true" selection-start-line="180" selection-start-column="32" selection-end-line="180" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_Redis五种数据结构命令的深入讲解.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-179">
           <caret line="621" column="29" lean-forward="true" selection-start-line="621" selection-start-column="29" selection-end-line="621" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_使用Redis构建Web应用.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="183" column="36" lean-forward="true" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04_数据安全与性能保证.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="180" column="47" lean-forward="true" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
         </state>
       </provider>
     </entry>
