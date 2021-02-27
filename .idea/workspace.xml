@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed544da0-c7c6-4f42-b443-bac625e7c7e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/04_数据安全与性能保证.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/05_使用Redis构建支持程序.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,10 +14,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/04_数据安全与性能保证.py">
+        <entry file="file://$PROJECT_DIR$/05_使用Redis构建支持程序.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="180" column="47" lean-forward="true" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
+            <state relative-caret-position="233">
+              <caret line="378" column="43" selection-start-line="378" selection-start-column="43" selection-end-line="378" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -30,6 +30,10 @@
       <find>can_cache</find>
       <find>only</find>
       <find>r</find>
+      <find>log_common</find>
+      <find>SAMPLE_COUNT</find>
+      <find>bisect</find>
+      <find>elif not existing:</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -43,12 +47,12 @@
         <option value="$PROJECT_DIR$/03_Redis五种数据结构命令的深入讲解.py" />
         <option value="$PROJECT_DIR$/数据安全与性能保证.py" />
         <option value="$PROJECT_DIR$/04_数据安全与性能保证.py" />
+        <option value="$PROJECT_DIR$/05_使用Redis构建支持程序.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="498" />
-    <option name="y" value="123" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
@@ -57,7 +61,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -69,6 +72,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -108,15 +112,32 @@
       <workItem from="1601563033027" duration="86735000" />
       <workItem from="1602573031952" duration="50000" />
       <workItem from="1603613048738" duration="6990000" />
-      <workItem from="1603677772425" duration="5693000" />
+      <workItem from="1603677772425" duration="22942000" />
+      <workItem from="1604155047392" duration="6515000" />
+      <workItem from="1604384506575" duration="903000" />
+      <workItem from="1604905305716" duration="5234000" />
+      <workItem from="1605148247749" duration="925000" />
+      <workItem from="1605181280921" duration="230000" />
+      <workItem from="1605236292069" duration="4120000" />
+      <workItem from="1605364360839" duration="1343000" />
+      <workItem from="1605619835719" duration="332000" />
+      <workItem from="1605800705603" duration="540000" />
+      <workItem from="1606037680275" duration="562000" />
+      <workItem from="1606051223823" duration="1068000" />
+      <workItem from="1606574466681" duration="558000" />
+      <workItem from="1607571815984" duration="967000" />
+      <workItem from="1608113803995" duration="449000" />
+      <workItem from="1608874119960" duration="596000" />
+      <workItem from="1609254324728" duration="553000" />
+      <workItem from="1609311920527" duration="597000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114354000" />
+    <option name="totallyTimeSpent" value="157095000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="386" y="209" width="1280" height="777" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.28671876" />
@@ -169,8 +190,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/04_数据安全与性能保证.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="180" column="47" lean-forward="true" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
+        <state relative-caret-position="88">
+          <caret line="187" column="46" selection-start-line="187" selection-start-column="46" selection-end-line="187" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05_使用Redis构建支持程序.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="378" column="43" selection-start-line="378" selection-start-column="43" selection-end-line="378" selection-end-column="43" />
         </state>
       </provider>
     </entry>
